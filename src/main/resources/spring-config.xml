@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- spring启动时扫描项目路径下的properties文件,后续用${key }方式取出对应值,这样可以代码解耦和，后续只需修改properties文件即可 -->
+    <context:property-placeholder
+            location="classpath:db.properties"/>
+
+    <!--扫描注解Bean-->
+    <context:component-scan base-package="com.louie.ssm"/>
+
+    <!--&lt;!&ndash;自定义的参数注入&ndash;&gt;-->
+    <!--<bean class="com.sws.subd.external.config.CPConfig">-->
+    <!--<property name="baseUrl" value="${cp.baseUrl}"/>-->
+    <!--<property name="sysCd" value="${cp.sysCd}"/>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash;开启使用@Transaction注解&ndash;&gt;-->
+    <!--<tx:annotation-driven/>-->
+
+    <!--&lt;!&ndash; 启动对@AspectJ（面向切面）注解的支持 &ndash;&gt;-->
+    <!--<aop:aspectj-autoproxy/>-->
+
+    <import resource="classpath:spring-config-db.xml"/>
+    <import resource="classpath:spring-config-mybatis.xml"/>
+</beans>
