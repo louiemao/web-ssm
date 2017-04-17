@@ -60,9 +60,9 @@
 
 
         <!-- 客户端代码，生成易于使用的针对Model对象和XML配置文件 的代码
-                type="ANNOTATEDMAPPER",生成Java Model 和基于注解的Mapper对象
-                type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象
-                type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口
+                type="ANNOTATEDMAPPER",基于注解的Mapper接口，不会有对应的XML映射文件
+                type="MIXEDMAPPER",XML和注解的混合形式，(上面这种情况中的)SqlProvider注解方法会被XML替代
+                type="XMLMAPPER",所有的方法都在XML中，接口调用依赖XML文件
         -->
         <javaClientGenerator targetPackage="com.louie.ssm.dao" targetProject="src/main/java" type="MIXEDMAPPER">
             <property name="enableSubPackages" value="false"/>
